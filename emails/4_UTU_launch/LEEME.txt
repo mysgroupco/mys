@@ -1,0 +1,78 @@
+CORREO 4 - LANZAMIENTO DE UTU
+=============================
+
+ARCHIVOS
+--------
+4_UTU_launch.html              el correo
+images/                        9 imagenes de "cromo" de marca (logo, iconos,
+                               tarjetas de modelo). Son las MISMAS de los
+                               correos 1, 2 y 3.
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  UTU. Squared off, never boxed in.
+Preview text:        Flat top, hard angle. UTU is online.
+Alternativas A/B:    New in: UTU (11 car.)  /  A different kind of square (27 car.)
+
+COMO CARGARLO EN KLAVIYO
+------------------------
+1. IMAGENES.
+   a) Las FOTOS DE PRODUCTO ya estan en tu tienda (son las fotos reales de
+      los productos UTU en Shopify). El HTML apunta directo a ellas, no hay
+      que subir nada.
+   b) El "cromo" de la carpeta images/ (logo, iconos, tarjetas de modelo)
+      NO estaba subido a Shopify -> por eso los correos anteriores se veian
+      con las imagenes rotas. Sube las 9 imagenes de images/ a
+      Shopify -> Configuracion -> Archivos, SIN RENOMBRARLAS.
+      Son las mismas de los correos 1, 2 y 3: si ya las subiste con otro
+      correo, NO hace falta subirlas de nuevo.
+
+2. Klaviyo -> Content -> Templates -> Create template -> Code editor
+   (plantilla HTML en blanco). Pega el HTML completo y guarda.
+   NO uses el editor drag-and-drop: desarma las tablas.
+
+3. Campaigns -> Create campaign -> Email -> elige esa plantilla.
+
+YA RESUELTO
+-----------
+- {% unsubscribe %} es la etiqueta nativa de Klaviyo. No la cambies.
+- 600 px, tablas con estilos inline, apila a una columna bajo 620 px.
+- Bodoni 72 y Didot vienen instaladas en macOS/iOS, asi que Apple Mail
+  muestra la tipografia real de la marca. En Gmail y Outlook cae a
+  Georgia: es lo esperado, no un error.
+- Las fotos de producto son recortes sobre fondo transparente, asi que
+  van sobre un panel color arena (#F5F0EB) para que el frame siempre se
+  vea. La banda "Anatomy" mantiene el texto sobre negro.
+
+OJO CON EL PREHEADER
+--------------------
+El HTML ya trae el preheader oculto dentro del codigo. Si ademas llenas el
+campo "Preview text" de Klaviyo, el texto sale DOS VECES en la bandeja.
+Llena uno de los dos y deja el otro vacio.
+
+ANTES DE ENVIAR (aplica a los cinco correos)
+--------------------------------------------
+DIRECCION FISICA - obligatoria por ley en EE. UU. (CAN-SPAM).
+El pie dice "MYS Eyewear - Miami, Florida, United States", que no es una
+direccion postal valida. Pon la direccion real en Klaviyo
+(Account -> Organization) e insertala con {{ organization.full_address }},
+o escribela directo en el pie del HTML.
+
+PRUEBA DE ENVIO
+Manda un test a Gmail, Outlook y Mail de iPhone antes de la campana.
+Son tres motores de render distintos.
+
+DATOS VERIFICADOS EN SHOPIFY (2026-09-29)
+-----------------------------------------
+- UTU tiene 3 colorways en sol: Black Shiny, Dark Blue Shiny, Animal Print.
+- Precio sol 220.04 / optico 170.00 (el .04 sigue siendo el residuo de
+  conversion de divisa; este correo NO muestra precios en pantalla).
+- Handles reales usados en los botones:
+  /products/utu-black-shiny, /products/utu-animal-print,
+  /products/utu-blues-dark-shiny y /collections/utu (optico).
+
+PENDIENTE PROPIO DE ESTE CORREO
+-------------------------------
+PROTECCION UV. El correo dice solo lo que ya publica tu web
+("lenses that protect against UV rays"). Para poder decir UV400 hace falta
+la categoria del proveedor (UV400, EN 1836 o ANSI Z80.3).
