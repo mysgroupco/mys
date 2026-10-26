@@ -1,0 +1,59 @@
+CORREO 6 - RECOMPRA: UN SEGUNDO PUNTO DE VISTA
+==============================================
+(Flujo de retencion / cross-sell a quien ya compro un par)
+
+ARCHIVOS
+--------
+6_repurchase_second_pair.html   el correo
+images/                         9 imagenes de "cromo" de marca (logo, iconos,
+                                tarjetas de modelo). Son las MISMAS de los
+                                correos de lanzamiento.
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  One pair was never going to be enough.
+Preview text:        A different day asks for a different pair.
+Alternativas A/B:    Your second perspective (23 car.)  /  Time for pair #2 (18 car.)
+
+A QUIEN ENVIARLO (segmento Klaviyo sugerido)
+--------------------------------------------
+Clientes con 1 pedido, >30-45 dias desde la compra. Es cross-sell, no
+descuento: la marca evita la presion promocional, asi que este correo NO
+lleva codigo ni urgencia.
+
+COMO CARGARLO EN KLAVIYO
+------------------------
+1. IMAGENES.
+   a) Las FOTOS DE PRODUCTO ya estan en tu tienda. El HTML apunta directo
+      a ellas, no hay que subir nada.
+   b) El "cromo" de images/ (logo, iconos, tarjetas de modelo) debe estar
+      subido a Shopify -> Configuracion -> Archivos, SIN RENOMBRAR. Son los
+      mismos de los otros correos: si ya los subiste, OMITELO.
+2. Klaviyo -> Content -> Templates -> Create template -> Code editor.
+   Pega el HTML. NO uses el editor drag-and-drop: desarma las tablas.
+3. Flows -> usalo en un flujo post-compra, o en Campaigns para un envio
+   puntual al segmento de 1 pedido.
+
+YA RESUELTO
+-----------
+- {% unsubscribe %} es la etiqueta nativa de Klaviyo. No la cambies.
+- 600 px, tablas inline, apila a una columna bajo 620 px.
+- Bodoni 72/Didot en Apple Mail; cae a Georgia en Gmail/Outlook (esperado).
+- Fotos de producto sobre panel arena (#F5F0EB) para que el frame se vea.
+
+OJO CON EL PREHEADER
+--------------------
+El HTML ya trae el preheader oculto. Si ademas llenas "Preview text" en
+Klaviyo, sale DOS VECES. Llena uno y deja el otro vacio.
+
+ANTES DE ENVIAR (aplica a todos los correos)
+--------------------------------------------
+DIRECCION FISICA - obligatoria por CAN-SPAM. Pon la real en Klaviyo
+(Account -> Organization) con {{ organization.full_address }} o escribela
+en el pie. PRUEBA DE ENVIO a Gmail, Outlook y Mail de iPhone antes.
+
+NOTA DE CONTENIDO
+-----------------
+No muestra precios (por eso el tema del $220.04 no le afecta). Si quieres
+dirigir a un modelo concreto en vez de a los cuatro, cambia los enlaces
+y las tarjetas.

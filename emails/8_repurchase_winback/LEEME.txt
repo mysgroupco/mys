@@ -1,0 +1,56 @@
+CORREO 8 - RECOMPRA: WIN-BACK ("TE EXTRANAMOS")
+===============================================
+(Flujo de reactivacion de clientes inactivos)
+
+ARCHIVOS
+--------
+8_repurchase_winback.html       el correo
+images/                         9 imagenes de "cromo" de marca (logo, iconos,
+                                tarjetas de modelo). Son las MISMAS de los
+                                correos de lanzamiento.
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  It's been a while. The view missed you.
+Preview text:        Same point of view. New lineup. Come see.
+Alternativas A/B:    We kept your perspective (24 car.)  /  Still different, still here (26 car.)
+
+A QUIEN ENVIARLO (segmento Klaviyo sugerido)
+--------------------------------------------
+Clientes sin compra ni apertura en 90-180 dias. Es reactivacion: tono calido,
+sin descuento (coherente con la marca). Si decides ofrecer un incentivo, va
+en una variante aparte, no en este.
+
+COMO CARGARLO EN KLAVIYO
+------------------------
+1. IMAGENES.
+   a) Las FOTOS DE PRODUCTO ya estan en tu tienda. No hay que subir nada.
+   b) El "cromo" de images/ debe estar en Shopify -> Archivos, SIN
+      RENOMBRAR (los mismos de los otros correos; si ya estan, omitelo).
+2. Klaviyo -> Content -> Templates -> Code editor. Pega el HTML.
+   NO uses el drag-and-drop.
+3. Flows (win-back) o Campaigns al segmento inactivo.
+
+YA RESUELTO
+-----------
+- {% unsubscribe %} nativa de Klaviyo.
+- 600 px, tablas inline, apila bajo 620 px.
+- Bodoni 72/Didot en Apple Mail; Georgia en Gmail/Outlook (esperado).
+- Fotos de producto sobre panel arena (#F5F0EB).
+
+OJO CON EL PREHEADER
+--------------------
+Ya viene en el HTML. Si llenas "Preview text" en Klaviyo, sale DOS VECES.
+
+ANTES DE ENVIAR
+---------------
+DIRECCION FISICA (CAN-SPAM) en el pie. PRUEBA a Gmail, Outlook y iPhone.
+En un win-back, cuida MUCHO el remitente y la reputacion: envia por lotes a
+los menos inactivos primero.
+
+NOTA DE CONTENIDO
+-----------------
+No muestra precios. Menciona "nuevos acabados" (Ice, Animal Print) como
+gancho; son colorways reales en catalogo. La foto del hero es RA Ice.
+No usa el tagline "Our religion is difference" (el manual lo reserva para
+piezas de manifiesto, no para recompra).

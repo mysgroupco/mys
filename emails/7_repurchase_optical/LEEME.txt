@@ -1,0 +1,65 @@
+CORREO 7 - RECOMPRA: LA GEMELA OPTICA
+=====================================
+(Flujo de retencion / cross-sell de sol a optico y viceversa)
+
+ARCHIVOS
+--------
+7_repurchase_optical.html       el correo
+images/                         9 imagenes de "cromo" de marca (logo, iconos,
+                                tarjetas de modelo). Son las MISMAS de los
+                                correos de lanzamiento.
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  The shape you love, every day.
+Preview text:        MYS Optical: the same four shapes, from $170.
+Alternativas A/B:    Your frame has an optical twin (31 car.)  /  Now for every day (18 car.)
+
+A QUIEN ENVIARLO (segmento Klaviyo sugerido)
+--------------------------------------------
+Clientes que compraron SOL (ofreceles el OPTICO) o viceversa. Tambien sirve
+como segundo paso del flujo post-compra.
+
+COMO CARGARLO EN KLAVIYO
+------------------------
+1. IMAGENES.
+   a) Las FOTOS DE PRODUCTO (opticos) ya estan en tu tienda. El HTML apunta
+      directo a ellas, no hay que subir nada.
+   b) El "cromo" de images/ debe estar en Shopify -> Archivos, SIN
+      RENOMBRAR (los mismos de los otros correos; si ya estan, omitelo).
+2. Klaviyo -> Content -> Templates -> Code editor. Pega el HTML.
+   NO uses el drag-and-drop.
+3. Flows (post-compra) o Campaigns al segmento correspondiente.
+
+PRECIO
+------
+Este correo SI muestra precio: "$170" para el optico. Es el precio real y
+verificado en Shopify (2026-10-26) para las monturas opticas de los cuatro
+modelos. Los handles usados son los reales:
+  /products/elo-white-hueso-matte-optical
+  /products/jahdor-black-shiny-optical
+  /products/ra-black-shiny-optical
+  /products/utu-black-shiny-optical
+  /pages/optical-collection (CTA principal)
+
+YA RESUELTO
+-----------
+- {% unsubscribe %} nativa de Klaviyo.
+- 600 px, tablas inline, apila bajo 620 px.
+- Bodoni 72/Didot en Apple Mail; Georgia en Gmail/Outlook (esperado).
+- Fotos de producto sobre panel arena (#F5F0EB).
+
+OJO CON EL PREHEADER
+--------------------
+Ya viene en el HTML. Si llenas "Preview text" en Klaviyo, sale DOS VECES.
+
+ANTES DE ENVIAR
+---------------
+DIRECCION FISICA (CAN-SPAM) en el pie. PRUEBA a Gmail, Outlook y iPhone.
+
+NOTA DE CONTENIDO
+-----------------
+El correo dice que el optico viene con lente blue-light y que puedes llevarlo
+a tu optica para lentes graduados; es lo que indica la descripcion de los
+productos opticos en la tienda. Si tu proceso de graduado es distinto, ajusta
+ese parrafo.
