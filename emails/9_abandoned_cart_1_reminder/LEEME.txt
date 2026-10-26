@@ -1,0 +1,83 @@
+FLUJO DE CARRITO ABANDONADO - CORREO 1 de 3 (RECORDATORIO)
+==========================================================
+Trigger (Klaviyo):  "Checkout Started"
+Tiempo sugerido:    ~1 hora despues de abandonar el checkout
+
+ARCHIVOS
+--------
+9_abandoned_cart_1_reminder.html   el correo
+images/                            9 imagenes de "cromo" (logo, iconos,
+                                   tarjetas). Las MISMAS de los demas correos.
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  You left a perspective behind.
+Preview text:        Your selection is still in the cart — pick up where you left off.
+Alternativas A/B:    Still in your cart (18 car.)  /  Did you forget something? (24 car.)
+
+>>> LO MAS IMPORTANTE: EL BLOQUE DINAMICO DEL CARRITO <<<
+========================================================
+Este correo muestra el PRODUCTO REAL que la persona dejo en el carrito, con
+etiquetas dinamicas de Klaviyo. Las variables dependen de tu integracion
+Shopify<->Klaviyo, asi que hay que VERIFICARLAS una vez:
+
+1. En Klaviyo: Flows -> crea un flujo con trigger "Checkout Started"
+   (o "Started Checkout", segun tu cuenta).
+2. Abre un evento real: Analytics -> Metrics -> "Checkout Started" ->
+   entra a un evento reciente -> pestana para ver las variables.
+3. Compara los nombres con los que usa el HTML:
+
+   El HTML usa:
+     {% if event.extra.line_items %}
+       {% for item in event.extra.line_items %}
+         {{ item.title }}
+         {{ item.quantity }}
+         {{ item.line_price }}         (precio de la linea)
+         {{ item.product.images.0 }}   (URL de la imagen)
+         {{ item.product.url }}        (link al producto)
+       {% endfor %}
+     {% endif %}
+     Boton -> {{ event.extra.checkout_url }}
+
+   Si tu evento usa otros nombres (p. ej. "Items", "image_url",
+   "responsive_checkout_url"...), reemplazalos en el HTML. Son
+   buscar/reemplazar sencillos.
+
+4. SI NO CONFIGURAS NADA: el correo NO se rompe. El bloque tiene un
+   {% else %} con un texto de respaldo ("Your selection is saved...") y el
+   boton cae por defecto a https://myseyewear.com/cart. Pero pierdes la foto
+   del producto real, que es lo que hace rendir a este flujo: vale la pena
+   verificar las 6 variables de arriba.
+
+COMO CARGARLO EN KLAVIYO
+------------------------
+1. IMAGENES:
+   a) Fotos de producto: salen solas del evento (dinamicas) o ya estan en
+      la tienda; no hay que subir nada.
+   b) Cromo (images/): subelo a Shopify -> Archivos SIN RENOMBRAR. Son los
+      mismos de los demas correos; si ya estan, omitelo.
+2. Content -> Templates -> Create template -> Code editor. Pega el HTML.
+   NO uses drag-and-drop.
+3. Flows -> trigger "Checkout Started" -> agrega este email como paso 1.
+
+CADENCIA DEL FLUJO (los 3 correos)
+----------------------------------
+  Correo 1 (este)  ~1 h   Recordatorio
+  Correo 2         ~24 h  Reaseguro (por que MYS) + carrito
+  Correo 3         ~48 h  Ultimo aviso + carrito
+Agrega un filtro de flujo: SALIR si "Placed Order" desde que empezo el flujo
+(para no escribir a quien ya compro). Klaviyo lo sugiere por defecto.
+
+YA RESUELTO
+-----------
+- {% unsubscribe %} nativa de Klaviyo.
+- 600 px, tablas inline, apila bajo 620 px.
+- Bodoni 72/Didot en Apple Mail; Georgia en Gmail/Outlook (esperado).
+- Fotos sobre panel arena (#F5F0EB).
+- Sin descuento (coherente con la marca). El precio que se ve es el del
+  propio carrito (dinamico), no un valor fijo.
+
+ANTES DE ENVIAR
+---------------
+DIRECCION FISICA (CAN-SPAM) en el pie. PRUEBA en Gmail, Outlook e iPhone,
+y dispara un checkout de prueba para ver el bloque dinamico con datos reales.

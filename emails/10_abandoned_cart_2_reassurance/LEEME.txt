@@ -1,0 +1,42 @@
+FLUJO DE CARRITO ABANDONADO - CORREO 2 de 3 (REASEGURO)
+=======================================================
+Trigger (Klaviyo):  "Checkout Started"  (paso 2 del mismo flujo)
+Tiempo sugerido:    ~24 horas despues del correo 1
+
+ARCHIVOS
+--------
+10_abandoned_cart_2_reassurance.html   el correo
+images/                                9 imagenes de "cromo" (las mismas).
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  Thinking it over? Fair.
+Preview text:        Italian materials, UV protection, fast delivery and easy returns.
+Alternativas A/B:    Here's what comes with every MYS (34 car.)  /  Still saved for you (18 car.)
+
+QUE HACE DISTINTO A ESTE CORREO
+-------------------------------
+Es el de "matar objeciones": antes de volver a mostrar el carrito, resume
+las 4 razones para comprar (materiales italianos, proteccion UV, envio
+2-3 dias, devoluciones faciles). Todo es lo que ya publica la web; no afirma
+UV400 ni nada sin verificar.
+
+BLOQUE DINAMICO DEL CARRITO
+---------------------------
+IDENTICO al del correo 1. Usa las mismas variables de "Checkout Started":
+  {{ event.extra.line_items }} -> item.title / item.quantity /
+  item.line_price / item.product.images.0 / item.product.url
+  Boton -> {{ event.extra.checkout_url }}
+Si ya verificaste/ajustaste los nombres en el correo 1, aplica los MISMOS
+cambios aqui (es el mismo bloque). Tiene el mismo respaldo {% else %} y el
+mismo default a /cart si no hay datos.
+
+COMO CARGARLO / CADENCIA / "YA RESUELTO" / ANTES DE ENVIAR
+----------------------------------------------------------
+Igual que el correo 1 (ver su LEEME.txt). Resumen:
+- Sube el cromo de images/ a Shopify Files sin renombrar (si no lo hiciste).
+- Content -> Templates -> Code editor -> pega el HTML (no drag-and-drop).
+- Agregalo como paso 2 del flujo "Checkout Started", ~24 h despues del 1.
+- Filtro de flujo: salir si "Placed Order".
+- CAN-SPAM (direccion) + prueba en Gmail/Outlook/iPhone antes de activar.
+- Sin descuento. El precio que se ve es el del carrito real (dinamico).
