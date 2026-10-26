@@ -1,0 +1,70 @@
+FLUJO DE PRODUCTO VISTO (BROWSE ABANDONMENT) - CORREO 1 de 2
+============================================================
+Trigger (Klaviyo):  "Viewed Product"
+Tiempo sugerido:    ~4-6 horas despues de ver el producto (sin agregar al carrito)
+
+ARCHIVOS
+--------
+12_browse_abandon_1_reminder.html   el correo
+images/                             9 imagenes de "cromo" (las mismas de todos).
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  Still thinking about it?
+Preview text:        The one you were looking at is still here.
+Alternativas A/B:    Caught your eye? (15 car.)  /  You were looking at something (28 car.)
+
+>>> BLOQUE DINAMICO: PRODUCTO VISTO <<<
+=======================================
+A diferencia del carrito abandonado (que trae varios articulos en un loop),
+"Viewed Product" trae UN SOLO producto: el que la persona miro. El HTML usa
+las propiedades estandar del evento:
+
+   {% if event.ProductName %}
+     {{ event.ProductName }}     nombre del producto
+     {{ event.Price }}           precio
+     {{ event.ImageURL }}        URL de la imagen
+     {{ event.URL }}             link al producto (boton)
+   {% endif %}
+
+VERIFICA los nombres una vez (varian segun como este montado el tracking):
+1. Klaviyo -> Analytics -> Metrics -> "Viewed Product" -> abre un evento
+   reciente y mira las propiedades.
+2. Si tu evento usa otros nombres (p. ej. "Name", "$value", "ProductURL",
+   "ImageUrl"...), reemplazalos en el HTML (buscar/reemplazar).
+
+SI NO HAY DATOS: el correo NO se rompe. El {% else %} muestra un texto de
+respaldo con boton a /pages/sunglasses-collection, y cada enlace cae por
+defecto a esa coleccion. Pero pierdes la foto y el nombre reales, que es lo
+que hace rendir al flujo: vale la pena verificar las 4 propiedades.
+
+NOTA SOBRE EL PRECIO
+--------------------
+El precio sale dinamico del producto visto ({{ event.Price }}). Si el SKU
+que vio tiene el residuo 220.04, se vera asi hasta que lo corrijas en
+Shopify. No hay precios fijos escritos en el correo.
+
+COMO CARGARLO EN KLAVIYO
+------------------------
+1. Cromo (images/) -> Shopify -> Archivos SIN RENOMBRAR (los mismos de los
+   demas correos; si ya estan, omitelo). Las fotos de producto salen del
+   evento, no hay que subirlas.
+2. Content -> Templates -> Code editor -> pega el HTML (no drag-and-drop).
+3. Flows -> trigger "Viewed Product" -> paso 1.
+
+CADENCIA Y FILTROS DEL FLUJO (los 2 correos)
+--------------------------------------------
+  Correo 1 (este)  ~4-6 h   "Still thinking about it?"
+  Correo 2         ~24 h    "Take your time" + los 4 modelos
+Filtros de flujo IMPORTANTES (browse abandonment):
+  - SALIR si "Checkout Started" o "Placed Order" desde que entro al flujo
+    (si ya avanzo a carrito, lo recoge el flujo de carrito abandonado, no
+    este).
+  - Opcional: condicionar a que sea perfil con email conocido.
+La intencion de quien solo navega es mas debil que la de quien llena el
+carrito: por eso el flujo es corto (2 correos) y sin descuento.
+
+ANTES DE ENVIAR
+---------------
+DIRECCION FISICA (CAN-SPAM) en el pie. PRUEBA en Gmail/Outlook/iPhone y
+dispara un "Viewed Product" de prueba para ver el bloque con datos reales.

@@ -1,0 +1,54 @@
+FLUJO DE PRODUCTO VISTO (BROWSE ABANDONMENT) - CORREO 2 de 2
+============================================================
+Trigger (Klaviyo):  "Viewed Product"  (paso 2 del mismo flujo)
+Tiempo sugerido:    ~24 horas despues del correo 1
+
+ARCHIVOS
+--------
+13_browse_abandon_2_nudge.html   el correo
+images/                          9 imagenes de "cromo" (las mismas de todos).
+
+ASUNTO Y PREVIEW TEXT
+---------------------
+Asunto recomendado:  Take your time. The view will wait.
+Preview text:        See the one you looked at next to the rest.
+Alternativas A/B:    No rush (8 car.)  /  Still deciding? Compare the four (32 car.)
+
+QUE HACE DISTINTO A ESTE CORREO
+-------------------------------
+Cierra el flujo sin presion: reafirma que elegir "no se apura" (coherente
+con la marca) y ademas muestra los CUATRO modelos para que compare el que
+vio con el resto. Vuelve a mostrar el producto visto arriba (invertido:
+foto a la izquierda) y debajo la fila de los 4 modelos.
+
+BLOQUE DINAMICO: PRODUCTO VISTO
+-------------------------------
+IGUAL que el correo 1 pero con la foto a la izquierda. Mismas propiedades
+del evento "Viewed Product":
+  {{ event.ProductName }} / {{ event.Price }} / {{ event.ImageURL }} /
+  {{ event.URL }}
+Si ya ajustaste los nombres en el correo 1, aplica los MISMOS cambios aqui.
+Tiene el mismo respaldo {% else %} (muestra "Compare the four" y la fila de
+modelos siempre aparece).
+
+LA FILA DE 4 MODELOS
+--------------------
+Es estatica y usa el cromo g_elo/g_jahdor/g_ra/g_utu.jpg (ya en images/).
+Siempre se ve, haya o no datos del evento.
+
+COMO CARGARLO / CADENCIA / FILTROS / ANTES DE ENVIAR
+----------------------------------------------------
+Igual que el correo 1 (ver su LEEME.txt). Resumen:
+- Cromo de images/ a Shopify Files sin renombrar (si no lo hiciste).
+- Content -> Templates -> Code editor -> pega el HTML (no drag-and-drop).
+- Paso 2 del flujo "Viewed Product", ~24 h despues del 1.
+- Filtros: salir si "Checkout Started" o "Placed Order".
+- CAN-SPAM (direccion) + prueba en Gmail/Outlook/iPhone.
+- Sin descuento. Precio dinamico del producto visto.
+
+SI QUIERES UN TERCER CORREO
+---------------------------
+Para browse abandonment 2 correos suele ser suficiente (intencion debil).
+Si prefieres 3, se puede agregar uno a ~72 h con enfoque editorial (la
+historia de la marca / "our religion is difference") en vez de otro empujon
+de producto. Avisame y lo armo.
